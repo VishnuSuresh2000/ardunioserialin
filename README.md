@@ -6,11 +6,31 @@ A new Flutter project.
 
 an app that can be used as oscilloscope that from usb through arduino in the range of 10 t0 -10
 
-A few resources to get you started if this is your first Flutter project:
+upload this code in ardunio.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+static int temp=0;
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+void setup()
+{
+    Serial.begin(9600);
+    pinMode(13, OUTPUT);
+}
+
+void loop()
+{
+    digitalWrite(13,HIGH);
+    if(temp <100 && temp > 50){
+    Serial.println(6.0);
+    
+
+    }else if (temp==100){
+        temp=0;
+    }else{
+        Serial.println(3.0);
+    }
+    temp++;
+}
+
+
+
+connect arduino to mobile usb port through otg.
